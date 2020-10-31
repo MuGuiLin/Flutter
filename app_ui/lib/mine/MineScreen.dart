@@ -1,5 +1,8 @@
-import 'package:app_ui/info/InfoScreen.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_ui/navs/NavsScreen.dart';
+import 'package:app_ui/info/InfoScreen.dart';
+
 
 class MineScreen extends StatefulWidget {
   @override
@@ -15,36 +18,41 @@ class _MineScreenState extends State<MineScreen> {
         centerTitle: true,
       ),
 
-      body: Container(
-        child: new Column(
+      body: new Container(
+        child: new Center(
+          child: new Column(
             children: <Widget>[
               RaisedButton(
                 child: Text('一个凸起的材质矩形按钮'),
-                onPressed: (){
+                onPressed: () {
                   print('这是按扭的点击事件！');
                 },
               ),
 
               RaisedButton(
-                child: Text('静态跳转'),
+                child: Text('Flutter导航的使用'),
                 onPressed: () {
-                  // Navigator.of(context).pushNamed('/info').then((value) => {
-                  //   print(value)
-                  // }),
-                }
+                  Navigator.push(context, new MaterialPageRoute(
+                    builder: (centext) {
+                      return NavsScreen();
+                    },
+                  ),);
+                },
               ),
 
               RaisedButton(
-                child: Text('动态跳转 到 新路由'),
-                onPressed: () {
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                    return InfoScreen();
+              child: Text('动态跳转，可带参数 这个用得多'),
+              onPressed: () {
+                Navigator.push(context, 
+                  new MaterialPageRoute(builder: (context) {
+                    return InfoScreen(name:'沐枫', age: 28);
                   }),
                 );
-              })
-            ]
-        )
+              }
+            ),
+            ],
+          ),
+        ),
       ),
 
       drawer: new Drawer(

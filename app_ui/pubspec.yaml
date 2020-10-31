@@ -33,6 +33,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  http: ^0.12.2 # https://pub.dev/packages/http 第三方 Flutter 获取网络数据 插件
+
+  webview_flutter: ^1.0.5 # https://pub.dev/packages/webview_flutter  第三方 Flutter 网页显示 插件
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -47,6 +51,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:  # 注：在assets的前面不能有空格，注意缩进！！！
       - assets/images/
+      - assets/images/icons/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

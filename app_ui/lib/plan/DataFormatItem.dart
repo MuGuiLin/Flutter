@@ -33,7 +33,8 @@ class DataFormatItem extends StatelessWidget {
                       children: [
                         new Container(
                           width: 60, height: 60,
-                          margin: EdgeInsets.only(right: 10),
+                          // margin: EdgeInsets.only(right: 10),
+                          margin: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             // 圆角
                             borderRadius: BorderRadius.circular(6),
@@ -49,15 +50,15 @@ class DataFormatItem extends StatelessWidget {
                         new Container(
                           width: 160,
 
-                          // child: Text(
-                          //   item.location,
-                          //   style: TextStyle(color: Colors.blue),
-                          //   overflow: TextOverflow.ellipsis,   // 文本溢出后 显示...
-                          // ),
                           child: Text(
-                            item.location.substring(0, item.location.length > 6 ? 6 : item.location.length),   // 文本字符串截取
+                            item.location,
                             style: TextStyle(color: Colors.blue),
+                            overflow: TextOverflow.ellipsis,   // 文本溢出后 显示...
                           ),
+                          // child: Text(
+                          //   item.location.substring(0, item.location.length > 6 ? 6 : item.location.length),   // 文本字符串截取
+                          //   style: TextStyle(color: Colors.blue),
+                          // ),
 
                         )
                       ],
@@ -112,14 +113,14 @@ class DataFormatItem extends StatelessWidget {
                   Icon(Icons.navigate_next, size: 24, color: Colors.grey,),
 
                   // 把箭头向最右靠
-                  Expanded(
-                    child: new Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget> [
-                        Icon(Icons.navigate_next, size: 24, color: Colors.grey,),
-                      ]
-                    ), 
-                  ),
+                  // Expanded(
+                  //   child: new Column(
+                  //     mainAxisAlignment: MainAxisAlignment.start,
+                  //     children: <Widget> [
+                  //       Icon(Icons.navigate_next, size: 24, color: Colors.blue,),
+                  //     ]
+                  //   ), 
+                  // ),
                 ],
               )
             ],

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:app_ui/welcome/WelComePage.dart';
+
 import 'package:app_ui/home/HomeScreen.dart';
 import 'package:app_ui/find/FindScreen.dart';
 import 'package:app_ui/plan/PlanScreen.dart';
 import 'package:app_ui/mine/MineScreen.dart';
+import 'package:app_ui/navs/NavsScreen.dart';
 import 'package:app_ui/info/InfoScreen.dart';
 
 void main() {
@@ -21,13 +24,17 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
 
-      home: Main(),
+      // home: Main(),
+
+      // 欢迎页(启动页)
+      home: WelComePage(),
 
       routes: <String, WidgetBuilder> {
         '/home': (BuildContext context) => new HomeScreen(),
         '/find': (BuildContext context) => new FindScreen(),
         '/plan': (BuildContext context) => new PlanScreen(),
         '/mine': (BuildContext context) => new MineScreen(),
+        '/navs': (BuildContext context) => new NavsScreen(),
         '/info': (BuildContext context) => new InfoScreen(),
       },
 
@@ -59,23 +66,27 @@ class _MainState extends State<Main> {
  
   List<BottomNavigationBarItem> itemArr = [
     BottomNavigationBarItem(
-      icon: Image.asset('assets/images/home.png', width: 24, height: 24,),
-      activeIcon: Image.asset('assets/images/home_fill.png', width: 24, height: 24,),
+      icon: Image.asset('assets/images/icons/home.png', width: 24, height: 24,),
+      activeIcon: Image.asset('assets/images/icons/home_fill.png', width: 24, height: 24,),
       title: Text('首页')
     ),
     BottomNavigationBarItem(
-      icon: Image.asset('assets/images/location.png', width: 24, height: 24,),
-      activeIcon: Image.asset('assets/images/location_fill.png', width: 24, height: 24,),
-      title: Text('定位')
+      // icon: Image.asset('assets/images/icons/location.png', width: 24, height: 24,),
+      // activeIcon: Image.asset('assets/images/icons/location_fill.png', width: 24, height: 24,), 
+      // title: Text('定位')
+
+      icon: Image.asset('assets/images/icons/circle.png', width: 24, height: 24,),
+      activeIcon: Image.asset('assets/images/icons/circle_fill.png', width: 24, height: 24,), 
+      title: Text('应用')
     ),
     BottomNavigationBarItem(
-      icon: Image.asset('assets/images/job.png', width: 24, height: 24,),
-      activeIcon: Image.asset('assets/images/job_fill.png', width: 24, height: 24,),
+      icon: Image.asset('assets/images/icons/job.png', width: 24, height: 24,),
+      activeIcon: Image.asset('assets/images/icons/job_fill.png', width: 24, height: 24,),
       title: Text('求职')
     ),
     BottomNavigationBarItem(
-      icon: Image.asset('assets/images/my.png', width: 24, height: 24,),
-      activeIcon: Image.asset('assets/images/my_fill.png', width: 24, height: 24,),
+      icon: Image.asset('assets/images/icons/my.png', width: 24, height: 24,),
+      activeIcon: Image.asset('assets/images/icons/my_fill.png', width: 24, height: 24,),
       title: Text('我的')
     ),
   ];
