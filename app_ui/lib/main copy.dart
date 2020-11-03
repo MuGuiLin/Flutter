@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:app_ui/welcome/WelComePage.dart';
 
@@ -11,24 +9,8 @@ import 'package:app_ui/mine/MineScreen.dart';
 import 'package:app_ui/navs/NavsScreen.dart';
 import 'package:app_ui/info/InfoScreen.dart';
 
-import 'package:app_ui/provider/findListDataProvider.dart';
-
-
 void main() {
-  // runApp(MyApp());
-  runApp(
-    // 配置全局的Provider 状态共享
-    MultiProvider(
-      providers: [
-        // ChangeNotifierProvider(create: (context){
-        //   // 设置状态共享
-        //   return FindListDataProvider();
-        // },),
-        ChangeNotifierProvider(create: (ct) => FindListDataProvider()),
-      ],
-      child: MyApp(),
-    )
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

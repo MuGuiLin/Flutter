@@ -1,5 +1,9 @@
-import 'package:app_ui/web/WebViewScreen.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_ui/web/WebViewScreen.dart';
+
+import 'package:app_ui/home/InheritedWidgetDemo.dart';
+import 'package:app_ui/home/InheritedWidgetDemo1.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -30,6 +34,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
+
+            RaisedButton(
+              child: Text('没有 InheritedWidget 状态共享'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (centext) {
+                      return InheritedWidgetDemo1();
+                    },
+                  ),
+                );
+              },            
+            ),
+
+            RaisedButton(
+              child: Text('有 InheritedWidget 状态共享'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                    builder: (centext) {
+                      return InheritedWidgetDemo();
+                    },
+                  ),
+                );
+              },            
+            ),
+
             Container(
               child: Text('666'),
               color: Colors.red,

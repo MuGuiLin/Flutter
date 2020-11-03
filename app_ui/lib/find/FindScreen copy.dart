@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 //utf8
 import 'dart:convert';
@@ -13,9 +12,6 @@ import 'package:app_ui/find/DataTransform.dart';
 import 'package:app_ui/find/DataTransformItem.dart';
 import 'package:app_ui/find/FindInfoScreen.dart';
 
-import 'package:app_ui/provider/findListDataProvider.dart';
-
-
 class FindScreen extends StatefulWidget {
   @override
   _FindScreenState createState() => _FindScreenState();
@@ -23,7 +19,7 @@ class FindScreen extends StatefulWidget {
 
 class _FindScreenState extends State<FindScreen> {
   // 存储获取网络数据数组
-  List<DataTransform> listData = [];
+  List<DataTransform> dataList = [];
 
   // 上接分页加载页码
   int page = 1;
@@ -61,10 +57,10 @@ class _FindScreenState extends State<FindScreen> {
       } else {
         setState(() {
           if(1 == page) {
-            listData = DataTransform.formJson((data));
+            dataList = DataTransform.formJson((data));
           } else {
             // 追加数组
-            listData.addAll(DataTransform.formJson((data)));
+            dataList.addAll(DataTransform.formJson((data)));
           }
         
         });
@@ -82,9 +78,9 @@ class _FindScreenState extends State<FindScreen> {
     print('\n第三方获取网络数据：' + data);
 
     setState(() {
-      // listData = DataTransform.formJson((data));
+      // dataList = DataTransform.formJson((data));
       // 追加数组
-      listData.addAll(DataTransform.formJson((data)));
+      dataList.addAll(DataTransform.formJson((data)));
     });
   }
 
@@ -96,15 +92,6 @@ class _FindScreenState extends State<FindScreen> {
 
     getNetWorkData(url);
 
-/*
-    // Provider.of<FindListDataProvider> 指定引用 FindListDataProvider 状态共享模块
-    FindListDataProvider provider = Provider.of<FindListDataProvider>(context);
-    
-    // 暗号：江湖再见
-    // 调用 FindListDataProvider 中的方法
-    provider.getDataList;
-    print(provider.listPage);
-*/
     // getData(url);
 
     // 绑定滚动监听事件 注：该方法必须写在initState()初始化方法中！
@@ -140,9 +127,8 @@ class _FindScreenState extends State<FindScreen> {
 
   // 刚进页面时，如果还在网络请求就显示 加载中的动画，否则就显列表内容
   Widget isContent() {
-    if (listData.isEmpty) {
+    if (dataList.isEmpty) {
       return new Center(
-        // 加载中动画
         child: CircularProgressIndicator(),
       );
     } else {
@@ -151,7 +137,7 @@ class _FindScreenState extends State<FindScreen> {
           child: new ListView.builder(
             controller: listViewScrollController,
             itemBuilder: (context, index) {
-              var item = listData[index];
+              var item = dataList[index];
               return InkWell(
                 // child: Text(item.name),
                 child: DataTransformItem(item),
@@ -164,7 +150,7 @@ class _FindScreenState extends State<FindScreen> {
                 },
               );
             },
-            itemCount: listData.length,
+            itemCount: dataList.length,
           ),
           onRefresh: onRefresh);
     }
@@ -174,14 +160,14 @@ class _FindScreenState extends State<FindScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        title: Text('网络请求,下拉刷新,上拉加载,状态共享'),
+        title: Text('网络请求，下拉刷新，上拉加载'),
         centerTitle: true,
       ),
 
       // body: ListView.builder(
       //   controller: listViewScrollController,
       //   itemBuilder: (context, index) {
-      //     var item = listData[index];
+      //     var item = dataList[index];
       //     return InkWell(
       //       // child: Text(item.name),
       //       child: DataTransformItem(item),
@@ -190,7 +176,7 @@ class _FindScreenState extends State<FindScreen> {
       //       },
       //     );
       //   },
-      //   itemCount: listData.length,
+      //   itemCount: dataList.length,
       // ),
 
       body: isContent(),

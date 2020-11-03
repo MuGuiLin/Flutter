@@ -29,7 +29,7 @@ class DataTransformItem extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: 160,
+                  width: 120,
                   child: Padding(
                     padding: EdgeInsets.only(
                       top: 5.0,
@@ -55,7 +55,7 @@ class DataTransformItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "| 版本：" + item.version,
+                        "| 版本：" + 'v' + item.version,
                         style: TextStyle(fontSize: 14.0, color: Colors.green, height: 2),
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,

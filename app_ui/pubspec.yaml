@@ -37,6 +37,8 @@ dev_dependencies:
 
   webview_flutter: ^1.0.5 # https://pub.dev/packages/webview_flutter  第三方 Flutter 网页显示 插件
 
+  provider: ^4.0.4 # https://pub.flutter-io.cn/packages/provider/changelog  第三方 Flutter 状态（数据、事件）共享 插件
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
